@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{418abd9c-1420-4ff2-8b74-b2a261206465}</ProjectGuid>
-    <RootNamespace>ReadingTracker</RootNamespace>
+    <ProjectGuid>{607a537c-a048-4430-b4fa-a6a23fb80e7b}</ProjectGuid>
+    <RootNamespace>ReadingTrackerApp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -140,18 +140,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="ReadingTracker.h" />
+    <ClInclude Include="ReadingTrackerApp.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ReadingTracker.cpp" />
+    <ClCompile Include="ReadingTrackerApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ReadingTracker.rc" />
+    <ResourceCompile Include="ReadingTrackerApp.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="ReadingTracker.ico" />
+    <Image Include="ReadingTrackerApp.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

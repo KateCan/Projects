@@ -1,17 +1,17 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by ReadingTracker.rc
+// Used by ReadingTrackerApp.rc
 
 #define IDS_APP_TITLE			103
 
 #define IDR_MAINFRAME			128
-#define IDD_READINGTRACKER_DIALOG	102
+#define IDD_READINGTRACKERAPP_DIALOG	102
 #define IDD_ABOUTBOX			103
 #define IDM_ABOUT				104
 #define IDM_EXIT				105
-#define IDI_READINGTRACKER			107
+#define IDI_READINGTRACKERAPP			107
 #define IDI_SMALL				108
-#define IDC_READINGTRACKER			109
+#define IDC_READINGTRACKERAPP			109
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
