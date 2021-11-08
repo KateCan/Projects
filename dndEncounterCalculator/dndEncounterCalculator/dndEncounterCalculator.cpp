@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <unordered_map>
+#include <vector>
 
 #include "dndEncounterCalculator.h"
 #include "calculate.h"
@@ -14,7 +14,7 @@ int main()
 {
 	cout << "Welcome to Kate's D&D Encounter Calculator! Use this tool to find out if what you've planned is too difficult..." << endl;
 
-	unordered_map<int, int> allMonsters;
+	vector<pair<int,int>> allMonsters;
 	int numPlayers;
 	int playerLevel;
 	int numMonsters;
@@ -37,7 +37,7 @@ int main()
 		cout << "Monster CR: ";
 		cin >> monsterCR;
 
-		allMonsters.insert(numMonsters, monsterCR);
+		allMonsters.push_back(make_pair(numMonsters, monsterCR));
 
 		cout << "Do you have any more monsters to enter? (Y for yes, N for no)";
 		cin >> additionalMonsters;
@@ -54,7 +54,7 @@ int main()
 	//cout << "Is this correct? (Y for yes, N for no)";
 	//cin >> doubleCheck;
 
-	string difficulty = calculatedDifficulty(numPlayers, playerLevel, allMonsters);
+	string difficulty = calculatedDifficulty(numPlayers, playerLevel, &allMonsters);
 	cout << "The difficulty rating is: " << difficulty << endl;
 
 	return 0;
