@@ -146,7 +146,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
+            TCHAR greeting[] = _T("I'm currently reading...");
+            TextOut(hdc, 5, 5, greeting, _tcslen(greeting));
             EndPaint(hWnd, &ps);
         }
         break;
