@@ -13,4 +13,6 @@ const int monsterExps[34] =
   20000, 22000, 25000, 33000, 41000, 50000,
   6200, 75000, 90000, 105000, 120000, 135000, 155000};
 
-vector<int> getMonsterExps(vector<pair<int, int>> *allMonsters);
+vector<int> getMonsterExps(vector<pair<double, int>> *allMonsters);
+
+double getMonsterMultiplier(vector<pair<double, int>> *allMonsters);

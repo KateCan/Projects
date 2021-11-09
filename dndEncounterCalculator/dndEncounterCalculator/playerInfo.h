@@ -6,7 +6,7 @@
 using namespace std;
 
 // exp thresholds for characters based on their levels
-const int expThresholds[4][20] =
+const int expThresholds[20][4] =
 	{25, 50, 75, 100,
 	50, 100, 150, 200,
 	75, 150, 225, 400,
