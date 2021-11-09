@@ -5,57 +5,78 @@
 #include <string>
 #include <vector>
 
-#include "dndEncounterCalculator.h"
 #include "calculate.h"
 
 using namespace std;
 
 int main()
 {
-	cout << "Welcome to Kate's D&D Encounter Calculator! Use this tool to find out if what you've planned is too difficult..." << endl;
+	cout << "Welcome to Kate's D&D Encounter Calculator! "
+		<< "\nUse this tool to find out if the combat you've planned is too easy or too difficult" << endl;
 
-	vector<pair<int,int>> allMonsters;
-	int numPlayers;
-	int playerLevel;
-	int numMonsters;
-	int monsterCR;
-
-	cout << "Enter the number of players: ";
-	cin >> numPlayers;
-
-	cout << "Enter the level of the players: ";
-	cin >> playerLevel;
-
-	bool moreMonsters = true;
-	string additionalMonsters = "";
-
-	while (moreMonsters)
+	bool moreEncounters = true;
+	while (moreEncounters)
 	{
-		cout << "Number of Monsters: ";
-		cin >> numMonsters;
+		vector<pair<double, int>> allMonsters;
+		int numPlayers;
+		int playerLevel;
+		int numMonsters;
+		double monsterCR;
 
-		cout << "Monster CR: ";
-		cin >> monsterCR;
+		cout << "Enter the number of players: ";
+		cin >> numPlayers;
 
-		allMonsters.push_back(make_pair(numMonsters, monsterCR));
+		cout << "Enter the level of the players: ";
+		cin >> playerLevel;
 
-		cout << "Do you have any more monsters to enter? (Y for yes, N for no)";
-		cin >> additionalMonsters;
+		bool moreMonsters = true;
+		char additionalMonsters;
 
-		if(additionalMonsters == "N")
+		while (moreMonsters)
 		{
-			moreMonsters = false;
+			cout << "Number of Monsters: ";
+			cin >> numMonsters;
+
+			cout << "Monster Challenge Rating (for any fraction, use the decimal equivalent: 1/8 = 0.125, 1/4 = 0.25, 1/2 = 0.5: ";
+			cin >> monsterCR;
+
+			allMonsters.push_back(make_pair(monsterCR, numMonsters));
+
+			cout << "Do you have any more monsters to enter? (Y for yes, N for no)";
+			cin >> additionalMonsters;
+
+			additionalMonsters = toupper(additionalMonsters);
+
+			if (additionalMonsters == 'N')
+			{
+				moreMonsters = false;
+			}
 		}
+
+		cout << "With " << numPlayers << " players at level " << playerLevel << " fighting the following combination of monsters: " << endl;
+		for (int i = 0; i < allMonsters.size(); i++)
+		{
+			cout << allMonsters.at(i).second << " monsters with CR " << allMonsters.at(i).first << endl;
+		}
+
+		string difficulty = calculatedDifficulty(numPlayers, playerLevel, &allMonsters);
+		cout << "The difficulty rating is: " << difficulty << endl;
+
+		char additionalEncounters;
+		cout << "\n\nWould you like to enter in a new encounter? (Y for yes, N for no): ";
+		cin >> additionalEncounters;
+
+		additionalEncounters = toupper(additionalEncounters);
+
+		if (additionalEncounters == 'N')
+		{
+			moreEncounters = false;
+		}
+		else
+		{
+			allMonsters.clear();
+		}
+
 	}
-
-	cout << "So you've entered " << numPlayers << " players at level " << playerLevel << " fighting " << numMonsters << " monsters at CR " << monsterCR << endl;
-
-	//string doubleCheck;
-	//cout << "Is this correct? (Y for yes, N for no)";
-	//cin >> doubleCheck;
-
-	string difficulty = calculatedDifficulty(numPlayers, playerLevel, &allMonsters);
-	cout << "The difficulty rating is: " << difficulty << endl;
-
 	return 0;
 }
